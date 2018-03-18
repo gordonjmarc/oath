@@ -137,41 +137,6 @@ class LogScraper
 
 }
 
-/* script driver/execution block below */
-
-$file = "";
-$startTime = "";
-$endTime = ""; 
-
-/*
-if(!empty($argv[1]))
-{
-	$file = $argv[1];
-}
-
-if(!empty($argv[2]))
-{
-	$startTime = $argv[2];
-}
-
-if(!empty($argv[3]))
-{
-	$endTime = $argv[3];
-}
-*/
-/*if(empty($file)) 
-{
-	//throw new \InvalidArgumentException("arg 1 must be a file");
-	//echo "oops\n\n";
-	//die();
-}*/
-
-//TODO: handle timestamp inputs
-
-//$ls = new LogScraper($file);
-//$lr = $ls->parseEntries();
-
-//var_dump($lr);
 
 
 

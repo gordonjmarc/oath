@@ -12,7 +12,7 @@ class LogScraperTest extends \PHPUnit_Framework_TestCase
     	$ls = new LogScraper($file);
 		$lr = $ls->parseEntries();
 
-		var_dump($lr);
+		//var_dump($lr);
 
     	$this->assertEquals(true, true);
 	}
