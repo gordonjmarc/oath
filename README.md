@@ -10,8 +10,24 @@
 ## Environment Details
 This is implemented in PHP 7 using composer and PHPUnit
 
+
+## how to run (without PHP Unit)
+execute like this:
+```
+php ./driver.php samples/slow_queries.log
+```
+
 ## Setup Notes
-todo
+for using unit tests navigate to project root, run composer update:
+```
+composer update;
+```
+run all unit tests from project root:
+```
+phpunit
+```
+
+
 
 ## Implementation Notes
 
