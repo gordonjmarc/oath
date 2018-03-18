@@ -25,10 +25,10 @@ class LogScraper
 	public $rowsEffectedPattern = "/Rows_affected: (([0-9])*)/";
 	public $timeStampPattern = "/SET timestamp=(([0-9])*)/";
 
-	public $logReport;
+	private $logReport;
 
 
-	public function __construct($file)
+	public function __construct($file, $startTime = null, $endTime = null)
 	{
 		if (!file_exists($file)) 
 		{
@@ -49,9 +49,8 @@ class LogScraper
 		
 		if(empty($rawEntries)) 
 		{
-			//TODO: throw empty report exception
+			throw \InvalidArgumentException("query log is empty or invalid :(");	
 		}
-
 
 		foreach($rawEntries as $rawEntry) 
 		{
@@ -105,8 +104,5 @@ class LogScraper
 	}
 
 }
-
-
-
 
 ?>

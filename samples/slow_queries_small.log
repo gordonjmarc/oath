@@ -1,0 +1,24 @@
+# User@Host: AppUser[AppUser] @  [10.10.212.177]  Id: 5795961150
+# Schema: myawesomeapp  Last_errno: 0 Killed: 0
+# Query_time: 1.424876972509586  Lock_time: 0.008982496848932828  Rows_sent: 1  Rows_examined: 11267  Rows_affected: 0
+# Bytes_sent: 67
+SET timestamp=1521216616;
+SELECT id,type,status FROM posts WHERE user_id = 10674 AND state = 0 ORDER BY id DESC;
+# User@Host: AppUser[AppUser] @  [10.10.203.219]  Id: 5795962589
+# Schema: myawesomeapp  Last_errno: 0 Killed: 0
+# Query_time: 1.7295099805687522  Lock_time: 0.0007584364316770486  Rows_sent: 1  Rows_examined: 22519  Rows_affected: 0
+# Bytes_sent: 67
+SET timestamp=1521216616;
+SELECT * FROM posts WHERE user_id in (10797, 10198, 10839, 10383, 10993, 10794, 10287, 10627, 10693) AND state IN (0,5) AND type = 1;
+# User@Host: AppUser[AppUser] @  [10.10.229.1]  Id: 5795968324
+# Schema: myawesomeapp  Last_errno: 0 Killed: 0
+# Query_time: 0.6634375844623558  Lock_time: 0.0034509698283198354  Rows_sent: 1  Rows_examined: 21196  Rows_affected: 0
+# Bytes_sent: 67
+SET timestamp=1521216621;
+SELECT id,type,status FROM posts WHERE user_id = 10255 ORDER BY id DESC;
+# User@Host: AppUser[AppUser] @  [10.10.199.184]  Id: 5795961547
+# Schema: myawesomeapp  Last_errno: 0 Killed: 0
+# Query_time: 0.38041994691947134  Lock_time: 0.003621577455040954  Rows_sent: 0  Rows_examined: 2047951  Rows_affected: 8
+# Bytes_sent: 66
+SET timestamp=1521216623;
+DELETE FROM posts WHERE id = 13773967 AND user_id = 10077;

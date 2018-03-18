@@ -14,8 +14,13 @@ This is implemented in PHP 7 using composer and PHPUnit
 ## how to run (without PHP Unit)
 execute like this:
 ```
-php ./driver.php samples/slow_queries.log
+php ./driver.php samples/slow_queries.log 
 ```
+you may filter by linux epoch for start time, or end time:
+```
+php ./driver.php samples/slow_queries.log -1 1521216621
+```
+
 
 ## Setup Notes
 for using unit tests navigate to project root, run composer update:
