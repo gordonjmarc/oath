@@ -7,6 +7,12 @@
 * Provide some assurance your code operates as expected.
 * BONUS: Update the script to take an argument to aggregate based upon an arbitrary time window.
 
+## Environment Details
+This is implemented in PHP 7 using composer and PHPUnit
+
+## Setup Notes
+todo
+
 ## Implementation Notes
 
 MySQL slow query log may have varying formats. Each Query Entry is composed of some headers, the query itself, and a timestamp
