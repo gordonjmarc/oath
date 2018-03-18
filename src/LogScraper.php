@@ -49,7 +49,7 @@ class LogScraper
 
 	public $entryPattern=  "/# User@Host: /"; 
 	public $queryTimePattern = "/Query_time: (([0-9]|\.)*)/";
-	public $lockTimePattern = "/Query_time: (([0-9]|\.)*)/";
+	public $lockTimePattern = "/Lock_time: (([0-9]|\.)*)/";
 	public $rowsSentPattern = "/Rows_sent: (([0-9])*)/";
 	public $bytesSentPattern = "/Bytes_sent: (([0-9])*)/";
 	public $rowsExaminedPattern = "/Rows_examined: (([0-9])*)/";
