@@ -35,8 +35,10 @@ SHOW TABLES FROM `app`;
 
 Notice that there is a Time header here, but not in example provided in the assignment. Since entries may be variable in real life, it makes parsing a bit challenging, I shall assume the standard provided can be accounted for in this implementation, and entry format should require regular expression allowing to capture all contents of entry. 
 
-**I assume User@Host is the first header, and the final part of the statement is SQL statement itself.**
-**I also assume the metrics provided in the first example are the only interesting ones I can report upon in this implementation**
+###  My Assumptions 
+* User@Host is the first header, and marks beginning of an entry
+* SQL Statement is the last part of the entry
+* **This implementation assumes this isn't going to change, and code changes would be required if this became an issue!**
 
 ## Links
 * <https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html>
