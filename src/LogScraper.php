@@ -1,24 +1,62 @@
 <?php
+
+
 /**
- * Parses contents of whole log
+ * An enty with data captured from LogScraper
  */
+class LogEntry
+{
+	public $queryTime = "";
+	public $lockTime = "";
+	public $rowsSent = "";
+	public $bytesSent = "";
+	public $rowsExamined = "";
+	public $rowsEffected = "";
+	public $timeStamp = "";
+	public $query="";
+	public $queryType = "";
+}
+
+/**
+ * Collection of LogEntries, and Reporting Methods
+ */
+class LogReport
+{
+	public $entries = array();
+
+	public function addEntry($le) 
+	{
+		//TODO: validate entry
+
+		$this->entires[] = $le;
+	}
+
+	public function printSummaryReport() 
+	{
+		//TODO
+	}
+
+}
 
 
+/**
+ * Parses contents of whole log, creates log report
+ */
 class LogScraper
 {
+	public $file;
+	public $contents;
 
-	protected $file;
-	protected $contents;
+	public $entryPattern=  "/# User@Host: /"; 
+	public $queryTimePattern = "/Query_time: (([0-9]|\.)*)/";
+	public $lockTimePattern = "/Query_time: (([0-9]|\.)*)/";
+	public $rowsSentPattern = "/Rows_sent: (([0-9])*)/";
+	public $bytesSentPattern = "/Bytes_sent: (([0-9])*)/";
+	public $rowsExaminedPattern = "/Rows_examined: (([0-9])*)/";
+	public $rowsEffectedPattern = "/Rows_affected: (([0-9])*)/";
+	public $timeStampPattern = "/SET timestamp=(([0-9])*)/";
 
-	protected $entryPattern=  "/# User@Host: /"; 
-
-	protected $queryTimePattern = "/Query_time: (([0-9]|\.)*)/";
-	protected $lockTimePattern = "/Query_time: (([0-9]|\.)*)/";
-	protected $rowsSentPattern = "/Rows_sent: (([0-9])*)/";
-	protected $bytesSentPattern = "/Bytes_sent: (([0-9])*)/";
-	protected $rowsExaminedPattern = "/Rows_examined: (([0-9])*)/";
-	protected $rowsEffectedPattern = "/Rows_affected: (([0-9])*)/";
-	protected $timeStampPattern = "/SET timestamp=(([0-9])*)/";
+	public $logReport;
 
 
 	public function __construct($file)
@@ -31,70 +69,65 @@ class LogScraper
 		$this->file = new \SplFileInfo($file);
 		$contents = $this->file->openFile("r");
 		$this->contents = $contents->fread($this->file->getSize());
+
+		$this->logReport = new LogReport();
 	}
 
 	public function parseEntries() 
 	{
 
-		$entries = preg_split($this->entryPattern, $this->contents, -1, PREG_SPLIT_NO_EMPTY);
-
-		foreach($entries as $entry) 
+		$rawEntries = preg_split($this->entryPattern, $this->contents, -1, PREG_SPLIT_NO_EMPTY);
+		
+		foreach($rawEntries as $rawEntry) 
 		{
-			$queryTime = "";
-			$lockTime = "";
-			$rowsSent = "";
-			$bytesSent = "";
-			$rowsExamined = "";
-			$rowsEffected = "";
-			$timeStamp = "";
-			$query="";
-			$queryType = "";
+			$le = new LogEntry();
 
-	 		if(preg_match($this->queryTimePattern, $entry, $matches) ) 
+	 		if(preg_match($this->queryTimePattern, $rawEntry, $matches) ) 
 			{
-				$queryTime= $matches[1];
+				$le->queryTime= $matches[1];
 			}
 			
-			if(preg_match($this->lockTimePattern, $entry, $matches) ) 
+			if(preg_match($this->lockTimePattern, $rawEntry, $matches) ) 
 			{
-				$lockTime = $matches[1];
+				$le->lockTime = $matches[1];
 			}
 
-			if(preg_match($this->rowsSentPattern, $entry, $matches) ) 
+			if(preg_match($this->rowsSentPattern, $rawEntry, $matches) ) 
 			{
-				$rowsSent = $matches[1];
+				$le->rowsSent = $matches[1];
 			}
 
-			if(preg_match($this->bytesSentPattern, $entry, $matches) ) 
+			if(preg_match($this->bytesSentPattern, $rawEntry, $matches) ) 
 			{
-				$bytesSent = $matches[1];
+				$le->bytesSent = $matches[1];
 			}
 
-			if(preg_match($this->rowsExaminedPattern, $entry, $matches) ) 
+			if(preg_match($this->rowsExaminedPattern, $rawEntry, $matches) ) 
 			{
-				$rowsExamined = $matches[1];
+				$le->rowsExamined = $matches[1];
 			}
 
-			if(preg_match($this->rowsEffectedPattern, $entry, $matches) ) 
+			if(preg_match($this->rowsEffectedPattern, $rawEntry, $matches) ) 
 			{
-				$rowsEffected = $matches[1];
+				$le->rowsEffected = $matches[1];
 			}
 
-			if(preg_match($this->timeStampPattern, $entry, $matches) ) 
+			if(preg_match($this->timeStampPattern, $rawEntry, $matches) ) 
 			{
-				$timeStamp = $matches[1];
+				$le->timeStamp = $matches[1];
 			}
 
-			if(stripos($entry, ';') > 0) //query exists between semi colons
+			if(stripos($rawEntry, ';') > 0) //query exists between semi colons
 			{
-				$query = substr($entry, stripos($entry, ';'));
-				$queryType = substr($query, 0 , stripos($query, ' '));
-			} 
+				$le->query = trim ( substr($rawEntry, stripos($rawEntry, ';')+1 ) );
+				$le->queryType = substr($le->query, 0 , stripos($le->query, ' '));
+			}
+
+			$this->logReport->addEntry($le);
+		}
+
+		return $this->logReport;
 	}
-
-
-}
-
 
 }
 
@@ -126,8 +159,9 @@ if(empty($file))
 //TODO: handle timestamp inputs
 
 $ls = new LogScraper($file);
-$ls->parseEntries();
+$lr = $ls->parseEntries();
 
+//var_dump($lr);
 
 
 
