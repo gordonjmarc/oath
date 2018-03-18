@@ -33,7 +33,9 @@ SET timestamp=1424802716;
 SHOW TABLES FROM `app`;
 ```
 
-Notice that there is a Time header here, but not in examples provided. Since entries may be variable, it makes parsing a bit challenging. 
+Notice that there is a Time header here, but not in example provided in the assignment. Since entries may be variable in real life, it makes parsing a bit challenging, I shall assume the standard provided can be accounted for in this implementation, and entry format should require regular expression allowing to capture all contents of entry. 
+
+I assume User@Host is the first header , and the final part of the statement is SQL statement itself.
 
 
 ## Links
