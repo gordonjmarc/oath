@@ -39,7 +39,7 @@ Notice that there is a Time header here, but not in example provided in the assi
 * User@Host is the first header, and marks beginning of an entry
 * SQL Statement is the last part of the entry
 * **This implementation assumes this isn't going to change!** 
-** If this was the case, we would require some changes in the regular expression I am using to split entries.
+	* If this was the case, we would require some changes in the regular expression I am using to split entries.
 
 ## Links
 * <https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html>
