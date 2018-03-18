@@ -47,7 +47,13 @@ class LogScraper
 	public $file;
 	public $contents;
 
+	/* regex pattern used for parsing input into individual log entries */
+
 	public $entryPattern=  "/# User@Host: /"; 
+
+
+	/* regex patterns used to parse individual fields/headers in log entries */
+
 	public $queryTimePattern = "/Query_time: (([0-9]|\.)*)/";
 	public $lockTimePattern = "/Lock_time: (([0-9]|\.)*)/";
 	public $rowsSentPattern = "/Rows_sent: (([0-9])*)/";
@@ -131,6 +137,8 @@ class LogScraper
 
 }
 
+/* script driver/execution block below */
+
 $file = "";
 $startTime = "";
 $endTime = ""; 
@@ -149,7 +157,6 @@ if(!empty($argv[3]))
 {
 	$endTime = $argv[3];
 }
-
 
 if(empty($file)) 
 {
