@@ -1,0 +1,12 @@
+# User@Host: AppUser[AppUser] @  [10.10.231.172]  Id: 5795966175
+# Schema: myawesomeapp  Last_errno: 0 Killed: 0
+# Query_time: 0  Lock_time: 0.0024082536056373514  Rows_sent: 1  Rows_examined: 18350  Rows_affected: 0
+# Bytes_sent: 0
+SET timestamp=1521216600;
+ZZZ * FROM posts WHERE user_id = 10276 AND state = 0;
+# User@Host: AppUser[AppUser] @  [10.10.216.220]  Id: 5795961531
+# Schema: myawesomeapp  Last_errno: 0 Killed: 0
+# Query_time: 0.7033341973976548  Lock_time: 0.006676188106269559  Rows_sent: 1  Rows_examined: 19891  Rows_affected: 0
+# Bytes_sent: 67
+SET timestamp=1521216603;
+SELECT * FROM posts WHERE user_id in (10808, 10251, 10601, 10637, 10930, 10250, 10404, 10951, 10064) ORDER BY id DESC;
