@@ -7,7 +7,7 @@
 * Provide some assurance your code operates as expected.
 * BONUS: Update the script to take an argument to aggregate based upon an arbitrary time window.
 
-## Notes
+## Implementation Notes
 
 MySQL slow query log may have varying formats. Each Query Entry is composed of some headers, the query itself, and a timestamp
 
@@ -35,8 +35,8 @@ SHOW TABLES FROM `app`;
 
 Notice that there is a Time header here, but not in example provided in the assignment. Since entries may be variable in real life, it makes parsing a bit challenging, I shall assume the standard provided can be accounted for in this implementation, and entry format should require regular expression allowing to capture all contents of entry. 
 
-I assume User@Host is the first header , and the final part of the statement is SQL statement itself.
-
+**I assume User@Host is the first header, and the final part of the statement is SQL statement itself.**
+**I also assume the metrics provided in the first example are the only interesting ones I can report upon in this implementation**
 
 ## Links
 * <https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html>
