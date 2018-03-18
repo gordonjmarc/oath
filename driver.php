@@ -1,5 +1,7 @@
 <?php
 
+require('src/LogEntry.php');
+require('src/LogReport.php');
 require('src/LogScraper.php');
 
 $file = "";

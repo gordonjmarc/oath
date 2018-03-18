@@ -1,6 +1,10 @@
 <?php
 namespace gordonjmarc\logscraper\test;
 use gordonjmarc\logscraper\LogScraper;
+use gordonjmarc\logscraper\LogEntry;
+use gordonjmarc\logscraper\LogReport;
+
+
 
 class LogScraperTest extends \PHPUnit_Framework_TestCase
 {
