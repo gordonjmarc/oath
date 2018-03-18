@@ -1,6 +1,6 @@
 <?php
 
-
+namespace gordonjmarc\logscraper;
 /**
  * An enty with data captured from LogScraper
  */
@@ -69,7 +69,7 @@ class LogScraper
 	{
 		if (!file_exists($file)) 
 		{
-			throw new FileNotFoundException("File not found");
+			throw new \FileNotFoundException("File not found");
 		}
 
 		$this->file = new \SplFileInfo($file);
@@ -143,6 +143,7 @@ $file = "";
 $startTime = "";
 $endTime = ""; 
 
+/*
 if(!empty($argv[1]))
 {
 	$file = $argv[1];
@@ -157,16 +158,18 @@ if(!empty($argv[3]))
 {
 	$endTime = $argv[3];
 }
-
-if(empty($file)) 
+*/
+/*if(empty($file)) 
 {
-	throw new InvalidArgumentException("arg 1 must be a file");
-}
+	//throw new \InvalidArgumentException("arg 1 must be a file");
+	//echo "oops\n\n";
+	//die();
+}*/
 
 //TODO: handle timestamp inputs
 
-$ls = new LogScraper($file);
-$lr = $ls->parseEntries();
+//$ls = new LogScraper($file);
+//$lr = $ls->parseEntries();
 
 //var_dump($lr);
 
