@@ -14,6 +14,7 @@ class LogReport
 		$this->entries[] = $le;
 	}
 
+
 	public function printSummaryReport($queryType = null, $startTime = null, $endTime = null) 
 	{
 		$queryTimeTotal = 0;
@@ -78,6 +79,75 @@ class LogReport
 		echo "rows examined total: {$rowsExaminedTotal}\n";
 		echo "rows effected total: {$rowsEffectedTotal}\n\n";
 	}
+
+
+
+	public function totalEntries() 
+	{
+		return count($this->entries );
+	}
+
+	public function totalSelectEntries() 
+	{
+		$total = 0;
+
+		foreach($this->entries as $entry) 
+		{
+			if($entry->queryType() == "SELECT")
+			{
+				$total++;
+			}
+		}
+
+		return $total;
+	}
+
+	public function totalUpdateEntries() 
+	{
+		$total = 0;
+
+		foreach($this->entries as $entry) 
+		{
+			if($entry->queryType() == "UPDATE")
+			{
+				$total++;
+			}
+		}
+
+		return $total;
+	}
+
+	public function totalInsertEntries() 
+	{
+		$total = 0;
+
+		foreach($this->entries as $entry) 
+		{
+			if($entry->queryType() == "INSERT")
+			{
+				$total++;
+			}
+		}
+
+		return $total;
+	}
+
+	public function totalDeleteEntries() 
+	{
+		$total = 0;
+
+		foreach($this->entries as $entry) 
+		{
+			if($entry->queryType() == "DELETE")
+			{
+				$total++;
+			}
+			$total++;
+		}
+
+		return $total;	
+	}
+
 
 }
 
