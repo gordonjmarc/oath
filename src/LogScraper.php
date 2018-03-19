@@ -22,7 +22,7 @@ class LogScraper
 	public $rowsSentPattern = "/Rows_sent: (([0-9])*)/";
 	public $bytesSentPattern = "/Bytes_sent: (([0-9])*)/";
 	public $rowsExaminedPattern = "/Rows_examined: (([0-9])*)/";
-	public $rowsEffectedPattern = "/Rows_affected: (([0-9])*)/";
+	public $rowsAffectedPattern = "/Rows_affected: (([0-9])*)/";
 	public $timeStampPattern = "/SET timestamp=(([0-9])*)/";
 
 	private $logReport;
@@ -81,9 +81,9 @@ class LogScraper
 				$le->rowsExamined($matches[1]);
 			}
 
-			if(preg_match($this->rowsEffectedPattern, $rawEntry, $matches) ) 
+			if(preg_match($this->rowsAffectedPattern, $rawEntry, $matches) ) 
 			{
-				$le->rowsEffected($matches[1]);
+				$le->rowsAffected($matches[1]);
 			}
 
 			if(preg_match($this->timeStampPattern, $rawEntry, $matches) ) 

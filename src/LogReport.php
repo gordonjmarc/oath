@@ -22,7 +22,7 @@ class LogReport
 		$rowsSentTotal = 0;
 		$bytesSentTotal = 0;
 		$rowsExaminedTotal = 0;
-		$rowsEffectedTotal = 0;
+		$rowsAffectedTotal = 0;
 
 		foreach($this->entries as $entry) 
 		{
@@ -51,7 +51,7 @@ class LogReport
 			$rowsSentTotal += $entry->rowsSent();
 			$bytesSentTotal += $entry->bytesSent();
 			$rowsExaminedTotal += $entry->rowsExamined();
-			$rowsEffectedTotal += $entry->rowsEffected();
+			$rowsAffectedTotal += $entry->rowsAffected();
 
 		}
 
@@ -77,7 +77,7 @@ class LogReport
 		echo "rows sent total: {$rowsSentTotal}\n";
 		echo "bytes sent total: {$bytesSentTotal}\n";
 		echo "rows examined total: {$rowsExaminedTotal}\n";
-		echo "rows effected total: {$rowsEffectedTotal}\n\n";
+		echo "rows affected total: {$rowsAffectedTotal}\n\n";
 	}
 
 

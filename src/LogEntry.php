@@ -12,7 +12,7 @@ class LogEntry
 	private $_rowsSent;
 	private $_bytesSent;
 	private $_rowsExamined;
-	private $_rowsEffected;
+	private $_rowsAffected;
 	private $_timeStamp;
 	private $_query;
 	private $_queryType;
@@ -93,19 +93,19 @@ class LogEntry
 		return $this->_rowsExamined;
     }
 
-    public function rowsEffected($init = null)
+    public function rowsAffected($init = null)
     {
     	if(!is_null($init))
 		{
 			if(!is_numeric($init)) 
 			{
-				throw new \InvalidArgumentException("invalid rowsEffected");		
+				throw new \InvalidArgumentException("invalid rowsAffected");		
 			}
 
-			$this->_rowsEffected = (int) $init;
+			$this->_rowsAffected = (int) $init;
 		}
 
-		return $this->_rowsEffected;
+		return $this->_rowsAffected;
     }
 
     public function timeStamp($init = null)
