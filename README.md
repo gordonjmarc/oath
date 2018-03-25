@@ -1,4 +1,4 @@
-# Tumblr SRE-Database Take Home Exercise
+# SRE-Database Take Home Exercise
 
 
 ##  Given Directions
